@@ -47,24 +47,7 @@ export default {
             name: 'meus-cursos',
             component: resolve(__dirname, 'pages/student/my_courses.vue'),
           },
-          {
-            path: 'curso',
-            component: resolve(
-              __dirname,
-              'pages/student/take_course/~take_course.module.vue',
-            ),
-            children: [
-              {
-                path: ':slug',
-                name: 'aluno-curso',
-                props: true,
-                component: resolve(
-                  __dirname,
-                  'pages/student/take_course/course.vue',
-                ),
-              },
-            ],
-          },
+          
           {
             path: 'curso/aulas/:id',
             component: resolve(
@@ -84,6 +67,27 @@ export default {
         path: '',
         redirect: '/login',
       });
+      
+      routes.push({
+          path: 'curso',
+          component: resolve(
+            __dirname,
+            'pages/student/take_course/~take_course.module.vue',
+          ),
+          children: [
+            {
+              path: ':slug',
+              name: 'aluno-curso',
+              props: true,
+              component: resolve(
+                __dirname,
+                'pages/student/take_course/course.vue',
+              ),
+            },
+          ],
+        
+      })
+
     },
   },
 

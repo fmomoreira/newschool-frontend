@@ -52,13 +52,20 @@ export default {
     },
   },
 
+  
+
   data() {
+    let baseUrl = window.location.origin
+   // Descomentar url abaixo para teste local 
+     baseUrl = "http://newschoolapp.com.br"
     return {
       isOpen: false,
-      shareUrl: window.location.origin + '/' + this.url,
+      shareUrl: baseUrl + '/' + this.url,
     };
   },
 };
+
+
 </script>
 
 <style lang="scss" scoped>

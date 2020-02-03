@@ -1,16 +1,16 @@
 <template>
   <v-card class="v-card-body" elevation="0" color="transparent" :tile="true">
-    <n-link :to="`curso/${slug}`">
+    <n-link :to="courseUrl">
       <v-img :src="image" />
     </n-link>
     <div class="media-and-footer-container">
-      <n-link :to="`curso/${slug}`" class="footer-container">
-        <v-card-title :to="'/curso/' + slug">{{title}}</v-card-title>
-        <v-card-subtitle class="mt-0" :to="'/curso/' + slug">{{teacher}}</v-card-subtitle>
+      <n-link :to="courseUrl" class="footer-container">
+        <v-card-title :to="courseUrl">{{title}}</v-card-title>
+        <v-card-subtitle class="mt-0" :to="courseUrl">{{teacher}}</v-card-subtitle>
       </n-link>
       <share-btn
         class="media-container"
-        :url="'curso/' + slug"
+        :url="courseUrl"
         :title="title"
         :description="description"
       />
@@ -23,10 +23,21 @@ import ShareBtn from "@/components/ShareBtn";
 export default {
   name: "courseCard",
   props: ["title", "description", "image", "teacher", "slug"],
+   computed: {
+    courseUrl: function() {
+      return '/curso/' + this.slug
+    }
+   },
   components: {
     ShareBtn
   }
+
+
 };
+
+
+
+
 </script>
 
 <style scoped>
